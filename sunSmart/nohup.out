@@ -1,0 +1,138 @@
+
+> sunsmart@0.0.0 start /home/ubuntu/sunSmart
+> node ./bin/www
+
+[0mGET /samples/last/1234 [36m304 [0m26.324 ms - -[0m
+[0mGET /samples/all/1234 [32m200 [0m8.260 ms - 221[0m
+[0mGET /samples/all/1234 [36m304 [0m4.201 ms - -[0m
+[0mGET /samples/all/1234 [36m304 [0m11.384 ms - -[0m
+[0mGET /samples/all/1234 [36m304 [0m2.613 ms - -[0m
+[0mGET /samples/all/1234 [36m304 [0m1.940 ms - -[0m
+[0mGET /samples/all/1234 [36m304 [0m2.371 ms - -[0m
+[0mGET /samples/all/1234 [36m304 [0m1.971 ms - -[0m
+[0mGET /samples/all/1234 [36m304 [0m3.975 ms - -[0m
+[0mGET /samples/all/1234 [36m304 [0m2.390 ms - -[0m
+[0mGET /samples/all/1234 [36m304 [0m2.810 ms - -[0m
+[0mGET /samples/all/1234 [36m304 [0m2.845 ms - -[0m
+
+> sunsmart@0.0.0 start /home/ubuntu/sunSmart
+> node ./bin/www
+
+[0mGET /home.html [32m200 [0m18.470 ms - 3132[0m
+[0mGET /javascripts/status.js [36m304 [0m1.792 ms - -[0m
+[0mGET /images/logo.jpg [36m304 [0m1.600 ms - -[0m
+[0mGET /samples/last/1234 [36m304 [0m19.967 ms - -[0m
+Terminated
+
+npm ERR! Linux 4.4.0-1022-aws
+npm ERR! argv "/home/ubuntu/.nvm/versions/node/v7.10.1/bin/node" "/home/ubuntu/.nvm/versions/node/v7.10.1/bin/npm" "start"
+npm ERR! node v7.10.1
+npm ERR! npm  v4.2.0
+npm ERR! code ELIFECYCLE
+npm ERR! errno 143
+npm ERR! sunsmart@0.0.0 start: `node ./bin/www`
+npm ERR! Exit status 143
+npm ERR! 
+npm ERR! Failed at the sunsmart@0.0.0 start script 'node ./bin/www'.
+npm ERR! Make sure you have the latest version of node.js and npm installed.
+npm ERR! If you do, this is most likely a problem with the sunsmart package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     node ./bin/www
+npm ERR! You can get information on how to open an issue for this project with:
+npm ERR!     npm bugs sunsmart
+npm ERR! Or if that isn't available, you can get their info via:
+npm ERR!     npm owner ls sunsmart
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /home/ubuntu/.npm/_logs/2017-11-18T05_04_12_196Z-debug.log
+
+> sunsmart@0.0.0 start /home/ubuntu/sunSmart
+> node ./bin/www
+
+[0mGET /home.html [36m304 [0m6.645 ms - -[0m
+[0mGET /javascripts/status.js [32m200 [0m13.002 ms - 3706[0m
+[0mGET /images/logo.jpg [36m304 [0m1.317 ms - -[0m
+[0mGET /samples/last/1234 [36m304 [0m20.584 ms - -[0m
+Terminated
+
+npm ERR! Linux 4.4.0-1022-aws
+npm ERR! argv "/home/ubuntu/.nvm/versions/node/v7.10.1/bin/node" "/home/ubuntu/.nvm/versions/node/v7.10.1/bin/npm" "start"
+npm ERR! node v7.10.1
+npm ERR! npm  v4.2.0
+npm ERR! code ELIFECYCLE
+npm ERR! errno 143
+npm ERR! sunsmart@0.0.0 start: `node ./bin/www`
+npm ERR! Exit status 143
+npm ERR! 
+npm ERR! Failed at the sunsmart@0.0.0 start script 'node ./bin/www'.
+npm ERR! Make sure you have the latest version of node.js and npm installed.
+npm ERR! If you do, this is most likely a problem with the sunsmart package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     node ./bin/www
+npm ERR! You can get information on how to open an issue for this project with:
+npm ERR!     npm bugs sunsmart
+npm ERR! Or if that isn't available, you can get their info via:
+npm ERR!     npm owner ls sunsmart
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /home/ubuntu/.npm/_logs/2017-11-18T05_07_41_623Z-debug.log
+
+> sunsmart@0.0.0 start /home/ubuntu/sunSmart
+> node ./bin/www
+
+[0mGET /samples/last/1234 [36m304 [0m27.040 ms - -[0m
+[0mGET /home.html [32m200 [0m14.337 ms - 3152[0m
+[0mGET /javascripts/status.js [36m304 [0m1.187 ms - -[0m
+[0mGET /images/logo.jpg [36m304 [0m0.561 ms - -[0m
+[0mGET / [32m200 [0m284.799 ms - 170[0m
+[0mGET /stylesheets/style.css [33m404 [0m42.396 ms - 1578[0m
+[0mGET /favicon.ico [33m404 [0m38.339 ms - 1578[0m
+[0mGET /home.html [36m304 [0m2.050 ms - -[0m
+[0mGET /javascripts/status.js [36m304 [0m0.656 ms - -[0m
+[0mGET /images/logo.jpg [36m304 [0m0.585 ms - -[0m
+[0mGET /samples/last/1234 [36m304 [0m18.300 ms - -[0m
+[0mGET /home.html [36m304 [0m0.826 ms - -[0m
+[0mGET /javascripts/status.js [36m304 [0m1.795 ms - -[0m
+[0mGET /images/logo.jpg [36m304 [0m0.337 ms - -[0m
+[0mGET /samples/last/1e002b001047343438323536 [32m200 [0m3.757 ms - -[0m
+[0mGET /samples/last/1e002b001047343438323536 [32m200 [0m3.068 ms - -[0m
+[0mOPTIONS /devices/register [32m200 [0m0.963 ms - 4[0m
+[0mGET /samples/last/1e002b001047343438323536 [32m200 [0m1.349 ms - -[0m
+[0mGET /samples/last/1e002b001047343438323536 [32m200 [0m2.259 ms - -[0m
+Terminated
+
+npm ERR! Linux 4.4.0-1022-aws
+npm ERR! argv "/home/ubuntu/.nvm/versions/node/v7.10.1/bin/node" "/home/ubuntu/.nvm/versions/node/v7.10.1/bin/npm" "start"
+npm ERR! node v7.10.1
+npm ERR! npm  v4.2.0
+npm ERR! code ELIFECYCLE
+npm ERR! errno 143
+npm ERR! sunsmart@0.0.0 start: `node ./bin/www`
+npm ERR! Exit status 143
+npm ERR! 
+npm ERR! Failed at the sunsmart@0.0.0 start script 'node ./bin/www'.
+npm ERR! Make sure you have the latest version of node.js and npm installed.
+npm ERR! If you do, this is most likely a problem with the sunsmart package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     node ./bin/www
+npm ERR! You can get information on how to open an issue for this project with:
+npm ERR!     npm bugs sunsmart
+npm ERR! Or if that isn't available, you can get their info via:
+npm ERR!     npm owner ls sunsmart
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /home/ubuntu/.npm/_logs/2017-11-18T20_45_56_938Z-debug.log
+
+> sunsmart@0.0.0 start /home/ubuntu/sunSmart
+> node ./bin/www
+
+[0mGET /samples/last/1234 [36m304 [0m25.973 ms - -[0m
+[0mGET /home.html [36m304 [0m2.925 ms - -[0m
+[0mGET /javascripts/status.js [36m304 [0m0.927 ms - -[0m
+[0mGET /images/logo.jpg [36m304 [0m0.705 ms - -[0m
