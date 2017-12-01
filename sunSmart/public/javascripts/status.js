@@ -1,111 +1,96 @@
-// Initiates an Ajax call to a GET endpoint for user status
-/*
-function sendReqForRegister() {
-  var email = document.getElementById("email").value;
-  var deviceId = document.getElementById("deviceId").value;
-  
-  var xhr = new XMLHttpRequest();
-  xhr.addEventListener("load", RegisterResponse);
-  xhr.responseType = "json";
-  xhr.open("POST", 'http://ec2-18-221-222-52.us-east-2.compute.amazonaws.com:3000/devices/register');
-  xhr.setRequestHeader("Content-type", "application/json");
-  xhr.send(JSON.stringify({deviceId:deviceId, email:email}));
-}
-*/
-var user = {    
-                fullName: "Andres Rebeil",
-                email: "andres07@email.arizona.edu",
-                deviceId: "1e002b001047343438323536",
-                lastAccess: "Yesterday, 11:59pm"
-            };
-            
-document.addEventListener("DOMContentLoaded", setUser);
-            
-function setUser(){
-   
-    document.getElementById("email").innerHTML = " " + user.email;
-    document.getElementById("fullName").innerHTML= " " + user.fullName;
-    document.getElementById("lastAccess").innerHTML = " " + user.lastAccess;
-
-}            
-
-function sendReqToGetData(){
-	var deviceId = "1e002b001047343438323536";
-    console.log(deviceId);
-  //var deviceId = document.getElementById("deviceId").value;
-    var xhr = new XMLHttpRequest();
-    xhr.addEventListener("load", displayMostRecentDevices);
-    xhr.responseType = "json";   
-    xhr.open("GET", "http://ec2-18-221-222-52.us-east-2.compute.amazonaws.com:3000/samples/last/" + deviceId);
-    //xhr.setRequestHeader("content-type", "application/json");
-    xhr.send();
-  
+// GET the user status and list of devices 
+function sendReqForStatus() {
+    $.ajax({
+        url: '/users/status',
+        type: 'GET',
+        headers: { 'x-auth': window.localStorage.getItem("token") },    
+        responseType: 'json',
+        success: statusResponse,
+        error: function(jqXHR, status, error) {
+          if (status === 401) {
+              window.localStorage.removeItem("token");
+              window.location = "signin.html";
+          }
+          else {
+             $("#error").html("Error: " + error);
+             $("#error").show();
+          }
+        }
+    }); 
 }
 
- function displayMostRecentDevices(){
-   
-   var deviceList = document.getElementById("devices");
-   
-   if(this.status === 200){
+// Update page to display user's account information and list of devices with apikeys
+function statusResponse(data, status, xhr) {
+    $("#main").show();
+
+    $("#email").html(data.email);
+    $("#fullName").html(data.fullName);
+    $("#lastAccess").html(data.lastAccess);
     
-        var jsonResponse = this.response;
-		var listString = "";
-		listString += "<table>";
-		
-		listString += "<tr>";
-	  	listString += "<th> DeviceID </th>";
-	  	listString += "<th> Longitude </th>"; 
-		  listString += "<th> Latitude </th>"; 
-	    listString += "<th> UV </th>"; 
-		  listString += "<th> Zip </th>"; 
-		  listString += "<th> Time Submitted </th>"; 
-    listString += "</tr>";
-        
-        listString += "<tr>";
-        if(jsonResponse.hasOwnProperty("deviceId"))
-            listString += "<td> " + jsonResponse.deviceId + " </td>";
-        else
-            listString += "<td></td>";
-            
-        if(jsonResponse.hasOwnProperty("longitude"))
-            listString += "<td> " + jsonResponse.longitude + " </td>";
-        else
-            listString += "<td></td>";
-
-        if(jsonResponse.hasOwnProperty("latitude"))
-
-            listString += "<td> " + jsonResponse.latitude + " </td>";
-        else
-            listString += "<td></td>";
-
-        if(jsonResponse.hasOwnProperty("uv"))
-
-            listString += "<td> " + jsonResponse.uv + " </td>";
-        else
-            listString += "<td></td>";
-            
-        if(jsonResponse.hasOwnProperty("zip"))
-            listString += "<td> " + jsonResponse.zip + " </td>";
-        else
-            listString += "<td></td>";
-
-        if(jsonResponse.hasOwnProperty("submitTime"))
-        
-            listString += "<td> " + jsonResponse.submitTime + " </td>";
-        else
-            listString += "<td></td>";
-        listString += "</tr>";
-        listString += "</table>";
-        
-        document.getElementById("deviceTable").innerHTML = listString;
-        
-       // var newListElement = document.createElement("li");
-       // var listData = document.createTextNode(listString);
-       // newListElement.appendChild(listData);
-       // deviceList.appendChild(newListElement);  
-   }
-
-   
+    // Add the devices to the list before the list item for the add device button (link)
+    for (var device of data.devices) {
+      $("#addDeviceForm").before("<li class='collection-item'>ID: " +
+         device.deviceId + ", APIKEY: " + device.apikey + "</li>")
+    }
+	//console.log(data.devices.length);
+	window.localStorage.setItem('numDevices', data.devices.length);
 }
 
-//document.getElementById("refreshData").addEventListener("click", sendReqToGetData(user.deviceId));
+// Registers the specified device with the server.
+function registerDevice() {
+	
+	var formData = { deviceId: $("#deviceId").val()};
+	
+    $.ajax({
+        url: '/devices/register',
+		dataType : 'json',
+		contentType: 'application/json; charset=UTF-8', // This is the money shot
+        type: 'POST',
+        headers: { 'x-auth': window.localStorage.getItem("token") },
+		data: JSON.stringify(formData),	 
+        responseType: 'json',
+        success: deviceRegistered,
+        error: function(jqXHR, status, error) {
+            var response = JSON.parse(jqXHR.responseText);
+            $("#error").html("Error: " + response.message);
+            $("#error").show();
+        }
+    }); 
+}
+
+// Device successfully register. Update the list of devices and hide the add device form
+function deviceRegistered(data, status, xhr) {
+    // Add new device to the device list
+    $("#addDeviceForm").before("<li class='collection-item'>ID: " +
+         $("#deviceId").val() + ", APIKEY: " + data["apikey"] + "</li>")
+    hideAddDeviceForm();
+}
+
+// Show add device form and hide the add device button (really a link)
+function showAddDeviceForm() {
+   $("#deviceId").val("");           // Clear the input for the device ID
+   $("#addDeviceControl").hide();    // Hide the add device link
+   $("#addDeviceForm").slideDown();  // Show the add device form
+}
+
+// Hides the add device form and shows the add device button (link)
+function hideAddDeviceForm() {
+   $("#addDeviceControl").show();  // Hide the add device link
+   $("#addDeviceForm").slideUp();  // Show the add device form
+   $("#error").hide();
+}
+
+// Handle authentication on page load
+$(function() {
+  if( !window.localStorage.getItem('token') ) {
+    window.location = "signin.html";
+  }
+  else {
+    sendReqForStatus();
+  }
+  
+  // Register event listeners
+  $("#addDevice").click(showAddDeviceForm);
+  $("#registerDevice").click(registerDevice);   
+  $("#cancel").click(hideAddDeviceForm);   
+});
