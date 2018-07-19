@@ -1,4 +1,4 @@
-ECE413 - Project Checkin & Demo
+Project Checkin & Demo
 
 Abdulla Alkhaja
 Andres Rebeil
